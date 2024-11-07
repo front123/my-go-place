@@ -7,36 +7,35 @@ import (
 
 // 学生表结构
 type Student struct {
-	gorm.Model   // 内嵌gorm.Model，包含ID，CreatedAt，UpdatedAt，DeletedAt等字段
-	Name         string
-	Age          uint
-	Class        string
+	gorm.Model // 内嵌gorm.Model，包含ID，CreatedAt，UpdatedAt，DeletedAt等字段
+	Name       string
+	Age        uint
+	Class      string
 }
 
 // 课程表结构
 type Course struct {
 	gorm.Model
-	Name     string
-	Teacher  string
-	Room     string
+	Name    string
+	Teacher string
+	Room    string
 }
 
 // 学生课程成绩表结构
 type Score struct {
 	gorm.Model
-	StudentID uint   // 外键，关联学生表的ID
-	CourseID  uint   // 外键，关联课程表的ID
-	Score     int    // 分数
+	StudentID uint // 外键，关联学生表的ID
+	CourseID  uint // 外键，关联课程表的ID
+	Score     int  // 分数
 	// Student   Student `gorm:"foreignKey:StudentID"` // 学生信息
 	// Course    Course  `gorm:"foreignKey:CourseID"`  // 课程信息
 }
 
-
-
 var db *gorm.DB
+
 func InitDB() {
 	var err error
-	dsn := "root:123456@tcp(127.0.0.1:3307)/school?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:pwd123@tcp(127.0.0.1:3308)/school?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
@@ -49,8 +48,6 @@ func InitDB() {
 
 	Query()
 }
-
-
 
 func importData() {
 	// 插入学生数据

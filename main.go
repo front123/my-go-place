@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"go-example/models"
+	"go-example/irispkg"
 	"net/http"
 	"runtime"
 	"sync"
@@ -36,7 +36,9 @@ func main() {
 
 	// useAtomicCount()
 
-	models.InitDB()
+	// models.InitDB()
+
+	irispkg.StartIrisApp()
 }
 
 func startPprof() {
