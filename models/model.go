@@ -46,7 +46,9 @@ func InitDB() {
 
 	// importData()
 
-	Query()
+	// Query()
+
+	SqlAssign()
 }
 
 func importData() {
