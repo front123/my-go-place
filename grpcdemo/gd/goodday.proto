@@ -1,21 +1,24 @@
 syntax = "proto3";
 
+package gdpkg;
+
 import "grpcdemo/hw/helloworld.proto";
 
+// defined which path to use, for some .go file need import pb.go file
 // need prefix with package defined in go.mod 
 option go_package = "go-example/grpcdemo/gd";
 
-package gdpkg;
 
 message DayOperation {
-    int32 index = 1;
-    hwpkg.HelloReq req = 2;
+  int32 index = 1;
+  hwpkg.HelloReq req = 2;
 }
 
 message SimpleMsg {
-    string msg = 1;
+  string msg = 1;
 }
 
 
 // in grpcdemo parent dir, run:
-// protoc --go_out=. --go-grpc_out=. --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative grpcdemo/gd/goodday.proto
+// protoc --go_out=. --go-grpc_out=. --go_opt=paths=source_relative 
+// --go-grpc_opt=paths=source_relative grpcdemo/gd/goodday.proto

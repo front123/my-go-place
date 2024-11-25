@@ -1,22 +1,24 @@
 syntax = "proto3";
 
+package hwpkg;
+
 // need prefix with package defined in go.mod 
 option go_package = "go-example/grpcdemo/hw";
 
-package hwpkg;
 
 service Greeter {
-    rpc SayHello (HelloReq) returns (HelloResp);
+  rpc SayHello (HelloReq) returns (HelloResp);
 }
 
 message HelloReq {
-    string name = 1;
+  string name = 1;
 }
 
 message HelloResp {
-    string message = 1;
+  string message = 1;
 }
 
 
 // in grpcdemo parent dir, run:
-// protoc --go_out=. --go-grpc_out=. --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative grpcdemo/hw/helloworld.proto
+// protoc --go_out=. --go-grpc_out=. --go_opt=paths=source_relative 
+// --go-grpc_opt=paths=source_relative grpcdemo/hw/helloworld.proto
